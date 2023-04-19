@@ -8,6 +8,10 @@ const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT || 5000;
+// middleware
+app.use(express_1.default.json());
+app.use(express_1.default.urlencoded({ extended: false }));
+// routing
 app.get("/", (req, res) => {
     res.send(`Express Typescript`);
 });
