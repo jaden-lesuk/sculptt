@@ -1,5 +1,6 @@
 import express, { Express, Request, Response} from "express";
 import dotenv from "dotenv";
+import { errorHandler } from "./middleware/errorMiddleware";
 
 dotenv.config();
 
@@ -14,6 +15,8 @@ app.use(express.urlencoded({ extended: false }));
 app.get("/", (req: Request, res: Response) => {
     res.send(`Express Typescript`);
 })
+
+app.use(errorHandler);
 
 app.listen(port, () => {
     console.log(`⚡️[server]: Server is running on port: ${port}`);
